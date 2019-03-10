@@ -6,7 +6,10 @@
             "system\\": "system/"
         },
         "files": [
-            "helpers/function.php"
+            "helpers/functions.php"
         ]
+    },
+    "require": {
+        "symfony/var-dumper": "^4.2"
     }
 }

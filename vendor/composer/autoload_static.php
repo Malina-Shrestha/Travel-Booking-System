@@ -7,13 +7,22 @@ namespace Composer\Autoload;
 class ComposerStaticInitfc7290391707d1496747d64d2c08db88
 {
     public static $files = array (
-        '399945bcf6a3e058b8193e2fbf53cadb' => __DIR__ . '/../..' . '/helpers/function.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
+        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        '85fa4719445c5d08168337b1fc8701c4' => __DIR__ . '/../..' . '/helpers/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         's' => 
         array (
             'system\\' => 7,
+        ),
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Php72\\' => 23,
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Component\\VarDumper\\' => 28,
         ),
         'A' => 
         array (
@@ -25,6 +34,18 @@ class ComposerStaticInitfc7290391707d1496747d64d2c08db88
         'system\\' => 
         array (
             0 => __DIR__ . '/../..' . '/system',
+        ),
+        'Symfony\\Polyfill\\Php72\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php72',
+        ),
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Component\\VarDumper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/var-dumper',
         ),
         'App\\' => 
         array (
