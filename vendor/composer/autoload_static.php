@@ -14,12 +14,9 @@ class ComposerStaticInitfc7290391707d1496747d64d2c08db88
     );
 
     public static $prefixLengthsPsr4 = array (
-        's' => 
-        array (
-            'system\\' => 7,
-        ),
         'S' => 
         array (
+            'System\\' => 7,
             'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\VarDumper\\' => 28,
@@ -31,7 +28,7 @@ class ComposerStaticInitfc7290391707d1496747d64d2c08db88
     );
 
     public static $prefixDirsPsr4 = array (
-        'system\\' => 
+        'System\\' => 
         array (
             0 => __DIR__ . '/../..' . '/system',
         ),
