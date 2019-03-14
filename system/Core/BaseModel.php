@@ -137,11 +137,22 @@ abstract class BaseModel
             }
 
             $collection[] = $obj;
-            return $collection;
+
         }
+        return $collection;
     }
 
+    public function single()
+    {
+        $collection = $this->get();
 
+        if(!empty($collection)) {
+            return $collection[0];
+        }
+        else {
+            return null;
+        }
+    }
 
 
     public function load($id) {
@@ -151,8 +162,12 @@ abstract class BaseModel
             $data = $this->getLoadedData($obj);
 
             foreach ($data as $key => $value) {
-
+                $this->{$key} = $value;
             }
+            return true;
+        }
+        else {
+            return false;
         }
     }
     private function buildSelect()
@@ -184,5 +199,8 @@ abstract class BaseModel
                 $data[$key] = $value;
             }
         }
+
+        dd(9$predefined, $all, $data);
+        return $data;
     }
 }
