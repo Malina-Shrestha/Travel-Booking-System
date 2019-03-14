@@ -3,9 +3,13 @@
 
 namespace System\DB;
 
-
+/**
+ * Class for connecting database and executing queries
+ * Class Database
+ * @package System\DB
+ */
 class Database
-{
+ {
 
     private $conn = null;
     private $sql = null;
@@ -24,6 +28,11 @@ class Database
 
     }
 
+    /**
+     * Execute the given SQL query
+     * @param string $sql
+     * @return \PDOStatement $stmt
+     */
     public function query($sql) {
 
         this->sql=$sql;
@@ -32,11 +41,21 @@ class Database
         return $stmt;
     }
 
+    /**
+     * Get data from PDOStatement in associative array.
+     * @param \PDOStatement $result
+     * @return array|mixed
+     */
+
     public function fetch_assoc($result) {
         $result->setFetchMode(\PDO::FETCH_ASSOC);
         return $result->fetchAll();
     }
 
+    /**
+     *Get last executed SQL query.
+     * @return string
+     */
     public function last_query()
     {
         return $this->sql;

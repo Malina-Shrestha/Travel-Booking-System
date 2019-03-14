@@ -2,10 +2,13 @@
     define("BASEDIR", __DIR__);
 
     include_once BASEDIR."/vendor/autoload.php";
-
     $user = new \App\Models\User();
 
-    $user->select('name, address')->offset( 1)->limit(1);
+    $users = $user->select('name, address')->offset( 1)->limit(1)->where('name', 'ram')->orWhere('address', '!=')->order('age','DESC')->get();
 
-    dump($user);
+
+
+
+    dump($users);
+
 
