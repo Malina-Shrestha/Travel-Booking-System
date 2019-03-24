@@ -1,16 +1,32 @@
 <?php
+
     define("BASEDIR", __DIR__);
 
     include_once BASEDIR."/vendor/autoload.php";
     $user = new \App\Models\User();
 
-    $users = $user->select('name, address')->offset( 1)->limit(1)->where('name', 'ram')->orWhere('address', '!=')->order('age','DESC')->get();
+//    $users = $user->select('name, address')->offset( 1)->limit(1)->where('name', 'ram')->orWhere('address', '!=')->single();
+//    $users = $user->select('name, address')->order('age', 'DESC')->get();
+//    foreach ($users as $item){
+//      echo "NAme: {$item->name}<br>Adresss: {$item->address}";
+//    }
+//
+   $user->load(1);
+   dump($user);
 
-    foreach ($users as $item){
-        echo "NAme: {$users->name}<br>Adresss: {$users->address}";
-    }
 
+//    $app = new \System\Core\Initialize;
+//    $app->start();
+////
+//    echo date_default_timezone_get();
 
-    dump($users);
+//    define("BASEDIR", __DIR__);
+//
+//    include_once BASEDIR."/vendor/autoload.php";
+//
+//   $user = new \App\Models\User();
+//
+//    $users = $user->select(' name, address')->offset(1)->limit(1)->where('name', 'ram')->orWhere('address', 'kalimati', ' !=')->get();
 
-
+//    $users = $user->select('name, address')->get();
+//    dump($users);
