@@ -3,6 +3,7 @@
 namespace System\Core;
 
 use System\DB\Database;
+use System\Exceptions\DataNotLoadedException;
 
 /**
  * Base model class containing query
@@ -20,6 +21,7 @@ abstract class BaseModel
     protected $limit = null;
     protected $conditions = null;
     protected $order = null;
+    protected $related = [];
     protected $sql = '';
     protected $editable = false;
 
@@ -115,6 +117,47 @@ abstract class BaseModel
     }
 
     /**
+     * Sets parameters for getting data
+     *from database
+     * @param string $classname
+     * @param int $foreign_key
+     * @param string $relation
+     * @return BaseModel $this
+     *
+     */
+    public function related($classname, $foreign_key, $relation)
+    {
+        $obj = new $classname;
+        $this->related = [
+            'table' => $obj->getTable(),
+            'pk' => $obj->getPk(),
+            'foreign_key' => $foreign_key,
+            'relation' => $relation,
+            'class_name' => $class_name
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Returns current table name
+     * @return string
+     */
+    public function getTable(): string
+    {
+        return $this->table;
+    }
+
+    /**
+     * Returns current primary key
+     * @return string
+     */
+    public function getPk(): string
+    {
+        return $this->pk;
+    }
+
+    /**
      * Build select query and return data
      * provided by database
      * @return array
@@ -129,7 +172,11 @@ abstract class BaseModel
        $collection = [];
 
        foreach ($data as $item) {
-           $classname = get_class($this);
+           if(empty($this->related)) {
+               $classname = get_class($this);
+           }else {
+               $classname = $this->related['class_name'];
+           }
            $obj = new $classname;
            $obj->editable = true;
 
@@ -168,6 +215,7 @@ abstract class BaseModel
      * Quickly load data on the current model
      * @param int $id
      * @return bool
+     *@throws DataNotLoadedException
      */
     public function load($id)
     {
@@ -186,7 +234,7 @@ abstract class BaseModel
 
         }
         else {
-            return false;
+            throw new DataNotLoadedException("Data with {$this->pk} = {$id} not found in the table {$this->table}.");
         }
     }
 
@@ -249,6 +297,19 @@ abstract class BaseModel
         if(strpos($this->select, $this->pk) == false) {
             $this->select .= ', id';
         }
+
+        if(empty($this->related)) {
+            $table = $this->table;
+        }
+        else {
+            $table = $this->related['table'];
+            if($this->related['relation'] == 'child') {
+                $this->where($this->related['foreign_key'], $this->{$this->pk});
+            }
+            else {
+                $this->where($this->related['pk'], $this->{$this->related['foreign_key']});
+            }
+        }
         $this->sql = "SELECT {$this->select} FROM {$this->table}";
 
         if(!empty($this->conditions)) {
@@ -301,6 +362,7 @@ abstract class BaseModel
         $this->conditions = null;
         $this->order = null;
         $this->sql = '';
+        $this->related = [];
 
     }
 }
