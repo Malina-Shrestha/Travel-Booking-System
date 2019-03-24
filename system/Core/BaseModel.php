@@ -68,7 +68,7 @@ abstract class BaseModel
     /**
      * Get conditions for selecting data from database.
      * @param string $column
-     * @param string $valu e
+     * @param string $value
      * @param string $operator
      * @return BaseModel $this
      */
@@ -125,9 +125,9 @@ abstract class BaseModel
      * @return BaseModel $this
      *
      */
-    public function related($classname, $foreign_key, $relation)
+    public function related($class_name, $foreign_key, $relation)
     {
-        $obj = new $classname;
+        $obj = new $class_name;
         $this->related = [
             'table' => $obj->getTable(),
             'pk' => $obj->getPk(),

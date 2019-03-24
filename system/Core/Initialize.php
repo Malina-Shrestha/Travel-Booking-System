@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: malina
- * Date: 3/17/19
- * Time: 12:47 PM
- */
 
 namespace System\Core;
 
@@ -26,7 +20,7 @@ class Initialize
 
     private function getUrlParts()
     {
-//        $base = config('base_url');
+//       $base = config('base_url');
 //
 //        dd($_SERVER);
 
@@ -56,7 +50,7 @@ class Initialize
             $parts['argument'] = $path[3];
         }
         else {
-            $parts['argument'] = 'null';
+            $parts['argument'] = null;
         }
 
         return $parts;
