@@ -119,7 +119,7 @@ abstract class BaseModel
     /**
      * Sets parameters for getting data
      *from database
-     * @param string $classname
+     * @param string $class_name
      * @param int $foreign_key
      * @param string $relation
      * @return BaseModel $this

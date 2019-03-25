@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: malina
- * Date: 3/18/19
- * Time: 12:30 PM
- */
-
 namespace System\Core;
 
 

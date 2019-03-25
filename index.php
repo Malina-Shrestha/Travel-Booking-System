@@ -7,7 +7,7 @@
     $app = new \System\Core\Initialize;
     $app->start();
 
-    echo date_default_timezone_get();
+//    echo date_default_timezone_get();
 
 
 //    $user = new \App\Models\User();

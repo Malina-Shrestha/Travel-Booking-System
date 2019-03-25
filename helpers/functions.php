@@ -8,7 +8,7 @@ if(!function_exists('config')) {
      */
     function config($key) {
         include BASEDIR.'/config/settings.php';
-        dump($config);
+        
         if(key_exists($key, $config)) {
             return $config[$key];
         }
