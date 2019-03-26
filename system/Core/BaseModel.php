@@ -181,7 +181,7 @@ abstract class BaseModel
            $obj->editable = true;
 
            foreach($item as $key => $value) {
-               $obj->{key} = $value;
+               $obj->{$key} = $value;
            }
 
            $collection[] = $obj;

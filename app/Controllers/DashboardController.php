@@ -8,13 +8,12 @@ use System\Core\View;
 
 class DashboardController extends BaseController
 {
-//
-//    public function __construct()
-//    {
-//        if(!$this->checkLogin('admin')) {
-//            redirect(url('/login'));
-//        }
-//    }
+    public function __construct()
+    {
+        if(!$this->checkLogin('admin')) {
+            redirect(url('/login'));
+        }
+    }
 
     public function index()
 

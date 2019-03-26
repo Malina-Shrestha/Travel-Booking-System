@@ -1,7 +1,6 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: malina
- * Date: 3/22/19
- * Time: 12:44 PM
- */
+        </div>
+        <script type="text/javascript" src="<?php echo url('/assets/js/jquery.js');?>"></script>
+        <script type="text/javascript" src="<?php echo url('/assets/js/bootstrap.min.js');?>"></script>
+        <script type="text/javascript" src="<?php echo url('/assets/js/back.js');?>"></script>
+    </body>
+</html>

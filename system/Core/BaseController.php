@@ -11,8 +11,6 @@ abstract class BaseController
     public function checkLogin($type)
     {
         return !empty($_SESSION[$type]);
-
-
     }
 
 }
