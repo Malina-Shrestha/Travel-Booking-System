@@ -15,7 +15,8 @@ class LogoutController extends BaseController
 {
     public function index()
     {
-        unset($_SESSION('admin'))
+        unset($_SESSION['admin']);
+        redirect(url('/login'));
 
     }
 

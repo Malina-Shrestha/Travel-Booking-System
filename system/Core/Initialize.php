@@ -7,7 +7,7 @@ class Initialize
 {
     public function __construct()
     {
-//        $_SESSION = start();
+        session_start();
         date_default_timezone_set(config('timezone'));
     }
 

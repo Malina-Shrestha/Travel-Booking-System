@@ -38,7 +38,7 @@
                         <a class="dropdown-item" href="#">Edit Profile</a>
                         <a class="dropdown-item" href="#">Change Password</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="<?php echo url('/logout'); ?>">Logout</a>
                     </div>
                 </li>
             </ul>
