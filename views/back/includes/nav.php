@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Admins</a>
+                    <a class="nav-link" href="<?php echo url('/admins'); ?>">Admins</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Categories</a>
@@ -32,11 +32,11 @@
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        User
+                        <?php echo current_user('admin')->name; ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Edit Profile</a>
-                        <a class="dropdown-item" href="#">Change Password</a>
+                        <a class="dropdown-item" href="<?php echo url('/profile/edit'); ?>">Edit Profile</a>
+                        <a class="dropdown-item" href="<?php echo url('/password/edit'); ?>">Change Password</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="<?php echo url('/logout'); ?>">Logout</a>
                     </div>

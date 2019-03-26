@@ -247,7 +247,7 @@ abstract class BaseModel
         $data = $this->getLoadedData($this);
         $setData = [];
         foreach ($data as $key => $value) {
-            $setData[] = "{$key} = '$value' ";
+            $setData[] = "{$key} = '$value'";
         }
         if($this->editable) {
             $this->sql = "UPDATE {$this->table} SET ".implode(', ', $setData)." WHERE {$this->pk} =  {$this->{$this->pk}}";

@@ -36,3 +36,18 @@ if(!function_exists('view')){
         return new \System\Core\View($view_file, $data);
     }
 }
+
+if(!function_exists('current_user')) {
+    function current_user($type) {
+        if($type == 'admin') {
+            $class_name = \App\Models\Admin::class;
+        }
+        else {
+            $class_name = \App\Models\User::class;
+        }
+
+        $user = new $class_name;
+        $user->load($_SESSION[$type]);
+        return $user;
+    }
+}
