@@ -9,10 +9,9 @@ class CategoriesController extends BaseController
 {
     public function index()
     {
-        $category = new Category;
-        $categories = $category->get();
+        $data = $this->paginate(new Category, 2, 'categories');
 
-        view('back/categories/index', compact('categories'));
+        view('back/categories/index', $data);
     }
 
     public function create() {

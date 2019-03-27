@@ -9,27 +9,9 @@ class AdminsController extends BaseController
 {
     public function index()
     {
-        $admin = new Admin;
-        $admins = $admin->get();
+       $data = $this->paginate(new Admin, 2, 'admins');
 
-//        if(!empty($_GET['page'])) {
-//            $pageno = $_GET['page'];
-//        }
-//        else {
-//            $pageno = 1;
-//        }
-//
-//        $limit = 2;
-//
-//        $pages = ceil( count($admins)/$limit);
-//
-//        $offset = ($pageno - 1) * $limit;
-//
-//        $admins = $admin->offset($offset)
-//                        ->$limit($limit)
-//                        ->get();
-
-        view('back/admins/index', compact('admins'));
+        view('back/admins/index', $data);
     }
 
     public function create() {

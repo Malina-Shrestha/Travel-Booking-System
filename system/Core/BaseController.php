@@ -14,29 +14,33 @@ abstract class BaseController
     }
 
 
-//    public function page()
-//    {
-//        $admin = new Admin;
-//        $admins = $admin->get();
-//
-//        if(!empty($_GET['page'])) {
-//            $pageno = $_GET['page'];
-//        }
-//        else {
-//            $pageno = 1;
-//        }
-//
-//        $limit = 2;
-//
-//        $pages = ceil( count($admins)/$limit);
-//
-//        $offset = ($pageno - 1) * $limit;
-//
-//        $admins = $admin->offset($offset)
-//            ->$limit($limit)
-//            ->get();
-//
-//        view('back/admins/index', compact('admins'));
-//    }
+    public function paginate($model, $limit, $name)
+    {
+        $models = $model->select('id')->get();
+        $pages = ceil( count($models) / $limit);
+        if(!empty($_GET['page'])) {
+            $pageno = $_GET['page'];
+
+            if($pageno > $pages){
+                $pageno = $pages;
+            }
+        }
+        else {
+            $pageno = 1;
+        }
+
+        ;
+
+        $offset = ($pageno - 1) * $limit;
+
+        ${$name} = $model->offset($offset)
+                         ->limit($limit)
+                         ->get();
+
+        $pagination = compact('pageno', 'pages', 'offset', 'limit');
+
+        return compact($name, 'pagination');
+
+    }
 
 }
