@@ -14,4 +14,14 @@ $(function () {
         }
 
     });
+
+    $('.delete').click(function (e) {
+        e.preventDefault();
+        url = $(this).attr('href');
+
+        if(confirm('Confirm delete')){
+            location.href = url;
+        }
+
+    })
 });

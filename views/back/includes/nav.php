@@ -11,7 +11,7 @@
                     <a class="nav-link" href="<?php echo url('/admins'); ?>">Admins</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Categories</a>
+                    <a class="nav-link" href="<?php echo url('/categories'); ?>">Categories</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Packages</a>

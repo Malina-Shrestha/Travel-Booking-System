@@ -49,7 +49,7 @@ class PasswordController extends BaseController
             'type' => 'success'
         ];
 
-        redirect(url('password/edit'));
+        redirect(url('/password/edit'));
     }
 
 }
