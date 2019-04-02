@@ -35,10 +35,10 @@
                         <td><?php echo $category->created_at; ?></td>
                         <td><?php echo $category->updated_at; ?></td>
                         <td>
-                            <?php if($_SESSION['admin'] != $category->id) : ?>
-                            <a href="<?php echo url('/admins/edit/'.$category->id) ?>" class="btn btn-primary btn-sm">Edit</a>
-                            <a href="<?php echo url('/admins/delete/'.$category->id) ?>" class="btn btn-danger btn-sm delete">Delete</a>
-                            <?php endif; ?>
+
+                            <a href="<?php echo url('/categories/edit/'.$category->id) ?>" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="<?php echo url('/categories/delete/'.$category->id) ?>" class="btn btn-danger btn-sm delete">Delete</a>
+
                         </td>
                     </tr>
                     <?php endforeach; ?>
@@ -49,47 +49,7 @@
             <?php endif; ?>
         </div>
      </div>
-        <?php extract($pagination); ?>
-        <?php if($pages > 1): ?>
-        <div class="row">
-            <div class="col-12">
-
-                <nav>
-                    <ul class="pagination">
-                        <?php if($pageno == 1): ?>
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#">Previous</a>
-                        </li>
-                        <?php else: ?>
-                        <li class="page-item">
-                            <a class="page-link" href="<?php echo url('/admins?page='.($pageno - 1)); ?>">Previous</a>
-                        </li>
-                        <?php endif; ?>
-
-                        <?php for($i = 1; $i <= $pages; $i++): ?>
-                        <?php if($i == $pageno): ?>
-                        <li class="page-item active"> <a class="page-link" href="#"><?php echo $i; ?></a>
-                        </li>
-                        <?php else: ?>
-                        <li class="page-item"> <a class="page-link" href="<?php echo url('/admins?page='.$i); ?>"><?php echo $i; ?></a>
-                        </li>
-                        <?php endif; ?>
-                        <?php endfor; ?>
-
-                        <?php if($pageno == $pages): ?>
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                        <?php else: ?>
-                        <li class="page-item">
-                        <a class="page-link" href="<?php echo url('/admins?page='.($pageno + 1)); ?>">Next</a>
-                        </li>
-                        <?php endif; ?>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <?php endif; ?>
+        <?php view('back/includes/pagination', ['pagination' => $pagination, 'url' => '/categories']); ?>
     </div>
 </div>
 <?php view('back/includes/footer'); ?>

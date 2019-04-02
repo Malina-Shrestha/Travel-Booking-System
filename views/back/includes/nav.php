@@ -14,13 +14,13 @@
                     <a class="nav-link" href="<?php echo url('/categories'); ?>">Categories</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Packages</a>
+                    <a class="nav-link" href="<?php echo url('/packages'); ?>">Packages</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">States</a>
+                    <a class="nav-link" href="<?php echo url('/states'); ?>">States</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Districts</a>
+                    <a class="nav-link" href="<?php echo url('/districts'); ?>">Districts</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Users</a>

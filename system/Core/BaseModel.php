@@ -310,7 +310,7 @@ abstract class BaseModel
                 $this->where($this->related['pk'], $this->{$this->related['foreign_key']});
             }
         }
-        $this->sql = "SELECT {$this->select} FROM {$this->table}";
+        $this->sql = "SELECT {$this->select} FROM {$table}";
 
         if(!empty($this->conditions)) {
             $this->sql .=" WHERE {$this->conditions}";

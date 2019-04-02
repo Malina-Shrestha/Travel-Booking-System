@@ -29,8 +29,6 @@ abstract class BaseController
             $pageno = 1;
         }
 
-        ;
-
         $offset = ($pageno - 1) * $limit;
 
         ${$name} = $model->offset($offset)
