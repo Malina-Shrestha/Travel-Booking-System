@@ -15,7 +15,7 @@ class HomeController extends  BaseController
 {
     public function index()
     {
-        view('');
+        view('front/home/index');
     }
 
 }

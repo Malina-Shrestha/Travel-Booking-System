@@ -1,0 +1,24 @@
+body {
+    background-color: #f0f0f0;
+}
+
+.package-name {
+    font-weight: bold;
+    font-size: 20px;
+    color: #1c7430;
+}
+
+.package-price {
+    font-size: 25px;
+    color: #005cbf;
+}
+
+.package-location {
+    font-size: 16px;
+    color: #6c757d;
+}
+
+img {
+    width: 300px;
+    height: 2000px;
+}

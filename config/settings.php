@@ -7,5 +7,5 @@ $config  = [
     'db_user' => 'admin',
     'db_pass' => 'admin',
     'timezone' => 'Asia/Kathmandu',
-    'default_controller' => 'dashboard'
+    'default_controller' => 'home'
 ];
