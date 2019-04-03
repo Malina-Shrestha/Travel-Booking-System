@@ -9,158 +9,34 @@ view('front/includes/nav');
         <div class="row">
             <div class="col-12">
                 <div class="row">
+                    <?php foreach ($packages as $package): ?>
                     <div class="col-3 mb-3">
                                 <div class="row">
                                     <div class="col-12">
-                                        <img src="<?php echo url('/assets/images/img_03041620194702_4591.jpeg'); ?> "class="img-fluid">
+                                        <?php if(!empty($package->image)): ?>
+                                            <div class="product-img border border-secondary" style="background-image: url('<?php echo url('/assets/images/'.$package->image); ?>');"></div>
+                                        <?php else: ?>
+                                            <div class="product-img border border-secondary" style="background-image: url('<?php echo url('/assets/images/no.jpeg'); ?>');"></div>
+                                      <?php endif; ?>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <a href="#" class="package-name">Package</a>
+                                        <a href="<?php echo url('/package/'.$package->id); ?>" class="package-name"><?php echo $package->name; ?></a>
                                     </div>
                                     <div class="col-12 mb-2 text-center package-price">
-                                        Rs. 2,000
+                                        Rs. <?php echo number_format($package->price); ?>
                                     </div>
                                     <div class="col-12 mb-2 text-center">
-                                        <a href="#" class="package-location">Kathmandu</a>
+                                        <?php
+                                            $district = $package->related(\App\Models\District::class, 'district_id','parent')->single();
+                                        ?>
+                                        <a href="<?php echo url('/location/'.$district->id); ?>" class="package-location"><?php echo $district->name; ?></a>
                                     </div>
                                     <div class="col-12 text-center">
-                                        <button class="btn btn-success">Book Now</button>
+                                        <a href="<?php echo url('/package/'.$package->id); ?>" class="btn btn-success">Book Now</a>
                                     </div>
                                 </div>
                             </div>
-                    <div class="col-3 mb-3">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <img src="<?php echo url('/assets/images/img_14041620194802_2535.jpg'); ?> "class="img-fluid">
-                                    </div>
-                                    <div class="col-12 text-center">
-                                        <a href="#" class="package-name">Package</a>
-                                    </div>
-                                    <div class="col-12 mb-2 text-center package-price">
-                                        Rs. 2,000
-                                    </div>
-                                    <div class="col-12 mb-2 text-center">
-                                        <a href="#" class="package-location">Kathmandu</a>
-                                    </div>
-                                    <div class="col-12 text-center">
-                                        <button class="btn btn-success">Book Now</button>
-                                    </div>
-                                </div>
-                            </div>
-                    <div class="col-3 mb-3">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <img src="<?php echo url('/assets/images/img_19041620193002_3746.jpg'); ?> "class="img-fluid">
-                                    </div>
-                                    <div class="col-12 text-center">
-                                        <a href="#" class="package-name">Package</a>
-                                    </div>
-                                    <div class="col-12 mb-2 text-center package-price">
-                                        Rs. 2,000
-                                    </div>
-                                    <div class="col-12 mb-2 text-center">
-                                        <a href="#" class="package-location">Kathmandu</a>
-                                    </div>
-                                    <div class="col-12 text-center">
-                                        <button class="btn btn-success">Book Now</button>
-                                    </div>
-                                </div>
-                            </div>
-                    <div class="col-3 mb-3">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <img src="<?php echo url('/assets/images/img_23041220193102_5218.jpg'); ?> "class="img-fluid">
-                                    </div>
-                                    <div class="col-12 text-center">
-                                        <a href="#" class="package-name">Package</a>
-                                    </div>
-                                    <div class="col-12 mb-2 text-center package-price">
-                                        Rs. 2,000
-                                    </div>
-                                    <div class="col-12 mb-2 text-center">
-                                        <a href="#" class="package-location">Kathmandu</a>
-                                    </div>
-                                    <div class="col-12 text-center">
-                                        <button class="btn btn-success">Book Now</button>
-                                    </div>
-                                </div>
-                            </div>
-                    <div class="col-3 mb-3">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <img src="<?php echo url('/assets/images/img_45041620194802_7878.jpg'); ?> "class="img-fluid">
-                                    </div>
-                                    <div class="col-12 text-center">
-                                        <a href="#" class="package-name">Package</a>
-                                    </div>
-                                    <div class="col-12 mb-2 text-center package-price">
-                                        Rs. 2,000
-                                    </div>
-                                    <div class="col-12 mb-2 text-center">
-                                        <a href="#" class="package-location">Kathmandu</a>
-                                    </div>
-                                    <div class="col-12 text-center">
-                                        <button class="btn btn-success">Book Now</button>
-                                    </div>
-                                </div>
-                            </div>
-                    <div class="col-3 mb-3">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <img src="<?php echo url('/assets/images/img_48041620193202_6545.jpg'); ?> "class="img-fluid">
-                                    </div>
-                                    <div class="col-12 text-center">
-                                        <a href="#" class="package-name">Package</a>
-                                    </div>
-                                    <div class="col-12 mb-2 text-center package-price">
-                                        Rs. 2,000
-                                    </div>
-                                    <div class="col-12 mb-2 text-center">
-                                        <a href="#" class="package-location">Kathmandu</a>
-                                    </div>
-                                    <div class="col-12 text-center">
-                                        <button class="btn btn-success">Book Now</button>
-                                    </div>
-                                </div>
-                            </div>
-                    <div class="col-3 mb-3">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <img src="<?php echo url('/assets/images/img_52041620192402_7131.jpg'); ?> "class="img-fluid">
-                                    </div>
-                                    <div class="col-12 text-center">
-                                        <a href="#" class="package-name">Package</a>
-                                    </div>
-                                    <div class="col-12 mb-2 text-center package-price">
-                                        Rs. 2,000
-                                    </div>
-                                    <div class="col-12 mb-2 text-center">
-                                        <a href="#" class="package-location">Kathmandu</a>
-                                    </div>
-                                    <div class="col-12 text-center">
-                                        <button class="btn btn-success">Book Now</button>
-                                    </div>
-                                </div>
-                            </div>
-                    <div class="col-3 mb-3">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <img src="<?php echo url('/assets/images/img_49041620194002_4908.jpg'); ?> "class="img-fluid">
-                                    </div>
-                                    <div class="col-12 text-center">
-                                        <a href="#" class="package-name">Package</a>
-                                    </div>
-                                    <div class="col-12 mb-2 text-center package-price">
-                                        Rs. 2,000
-                                    </div>
-                                    <div class="col-12 mb-2 text-center">
-                                        <a href="#" class="package-location">Kathmandu</a>
-                                    </div>
-                                    <div class="col-12 text-center">
-                                        <button class="btn btn-success">Book Now</button>
-                                    </div>
-                                </div>
-                            </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

@@ -51,3 +51,11 @@ if(!function_exists('current_user')) {
         return $user;
     }
 }
+
+if(!function_exists('login_check')) {
+
+    function login_check($type)
+    {
+        return !empty($_SESSION[$type]);
+    }
+}
