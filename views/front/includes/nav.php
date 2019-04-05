@@ -33,7 +33,7 @@
                 </li>
                 <?php else: ?>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Register</a>
+                        <a href="<?php echo url('/register')?>" class="nav-link">Register</a>
                     </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">Login</a>
