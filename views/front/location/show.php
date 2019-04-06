@@ -1,7 +1,7 @@
 <?php
-view('front/includes/header');
-view('front/includes/nav');
-
+    view('front/includes/header');
+    view('front/includes/nav');
+    view('front/includes/messages');
 ?>
 
 <div class="row">
@@ -46,15 +46,7 @@ view('front/includes/nav');
                         <h5><em>No packages found in this category.</em></h5>
                     </div>
                     <?php endif; ?>
-
-                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <footer class="col-12 bg-dark py-4 text-white text-center">
-        &copy; Booking System, <?php echo date('Y'); ?>.
-    </footer>
-</div>
 <?php view('front/includes/footer'); ?>

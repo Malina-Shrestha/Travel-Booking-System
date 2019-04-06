@@ -1,7 +1,7 @@
 <?php
-view('front/includes/header');
-view('front/includes/nav');
-
+    view('front/includes/header');
+    view('front/includes/nav');
+    view('front/includes/messages');
 ?>
 
 <div class="row">
@@ -25,6 +25,8 @@ view('front/includes/nav');
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
+                            <li class="nav-item">
+                                <a class="nav-link" id="booking-tab" data-toggle="tab" href="#booking" role="tab" aria-controls="booking" aria-selected="false">Booking</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
@@ -47,17 +49,37 @@ view('front/includes/nav');
                             </div>
                             <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab"><?php echo nl2br($package->description); ?></div>
                             <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">...</div>
+                            <div class="tab-pane fade" id="booking" role="tabpanel" aria-labelledby="booking-tab">
+                                <div class="col-5 mx-auto my-3">
+                                    <form action="<?php echo url('/booking/'); ?>">
+                                        <div class="form-group">
+                                            <label for="qty">Quantity</label>
+                                            <input type="number" name="qty" id="qty" class="form-control" min="1" value="1" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="start_date">Start Date</label>
+                                            <input type="text" name="start_date" id="start_date" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                        <label for="end_date">End Date</label>
+                                        <input type="text" name="end_date" id="end_date" class="form-control">
+                                            <small>Leave this field for single day packages.</small>
+                                </div>
+                                        <div class="form-group">
+                                        <label for="remarks">Remarks (if any)</label>
+                                            <textarea name="remarks" id="remarks" class="form-control"></textarea>
+                                </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">Book Now</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-    </div>
-</div>
-<div class="row">
-    <footer class="col-12 bg-dark py-4 text-white text-center">
-        &copy; Booking System, <?php echo date('Y'); ?>.
-    </footer>
-</div>
+
 <?php view('front/includes/footer'); ?>

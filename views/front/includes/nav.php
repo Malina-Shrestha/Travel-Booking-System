@@ -18,17 +18,17 @@
                 <?php endforeach; ?>
             </ul>
             <ul class="navbar-nav">
-                <?php if(login_check('customer')): ?>
+                <?php if(login_check('user')): ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo current_user('customer')->name; ?>
+                        <?php echo current_user('user')->name; ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">View Profile</a>
-                        <a class="dropdown-item" href="#">Edit Profile</a>
-                        <a class="dropdown-item" href="#">Change Password</a>
+                        <a class="dropdown-item" href="<?php echo url('/user'); ?>">View Profile</a>
+                        <a class="dropdown-item" href="<?php echo url('/user/edit'); ?>">Edit Profile</a>
+                        <a class="dropdown-item" href="<?php echo url('/user/password'); ?>">Change Password</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="<?php echo url('/user/logout'); ?>">Logout</a>
                     </div>
                 </li>
                 <?php else: ?>
@@ -36,7 +36,7 @@
                         <a href="<?php echo url('/register')?>" class="nav-link">Register</a>
                     </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Login</a>
+                    <a href="<?php echo url('/user/login'); ?>" class="nav-link">Login</a>
                 </li>
                 <?php endif; ?>
             </ul>
