@@ -33,7 +33,7 @@
                             <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
                                 <ul>
                                     <li><strong>Name:</strong> <?php echo $package->name; ?></li>
-                                    <li><strong>Price: </strong>Rs. <?php echo number_format($package->price); ?></li>
+                                     <li><strong>Price: </strong>Rs. <?php echo number_format($package->price); ?></li>
 
                                     <?php $category = $package->related(\App\Models\Category::class, 'category_id','parent')->single(); ?>
                                     <li><strong>Category: </strong><?php echo $category->name; ?></li>
@@ -51,18 +51,20 @@
                             <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">...</div>
                             <div class="tab-pane fade" id="booking" role="tabpanel" aria-labelledby="booking-tab">
                                 <div class="col-5 mx-auto my-3">
-                                    <form action="<?php echo url('/booking/'); ?>">
+                                    <?php if(login_check('user')): ?>
+                                    <form action="<?php echo url('/booking/'); ?>" method="post">
+                                        <input type="hidden" name="package_id" value="<?php echo $package->id; ?>">
                                         <div class="form-group">
                                             <label for="qty">Quantity</label>
                                             <input type="number" name="qty" id="qty" class="form-control" min="1" value="1" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="start_date">Start Date</label>
-                                            <input type="text" name="start_date" id="start_date" class="form-control" required>
+                                            <input type="text" name="start_date" id="start_date" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#start_date" required>
                                         </div>
                                         <div class="form-group">
-                                        <label for="end_date">End Date</label>
-                                        <input type="text" name="end_date" id="end_date" class="form-control">
+                                        <label for="end_date">End Date/Time</label>
+                                        <input type="text" name="end_date" id="end_date" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#end_date" >
                                             <small>Leave this field for single day packages.</small>
                                 </div>
                                         <div class="form-group">
@@ -74,6 +76,12 @@
                                         </div>
 
                                     </form>
+                                    <?php else: ?>
+                                    <h5 class="text-center">Please login to book this package.</h5>
+                                    <div class="col-12 text-center">
+                                        <a href="<?php echo url('/user/login'); ?>" class="btn btn-success btn-lg">Login</a>
+                                    </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

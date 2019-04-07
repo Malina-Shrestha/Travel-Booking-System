@@ -12,7 +12,11 @@ $(function () {
         else {
             $(this)[0].setCustomValidity('');
         }
-
     });
-
+    $('#start_date, #end_date').datetimepicker({
+        icons: {
+            time: 'fas fa-clock'
+        },
+        format: "YYYY-MM-DD HH:mm:ss"
+    });
 });
