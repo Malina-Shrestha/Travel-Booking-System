@@ -23,10 +23,13 @@
                     <a class="nav-link" href="<?php echo url('/districts'); ?>">Districts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Users</a>
+                    <a class="nav-link" href="<?php echo url('/users'); ?>">Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Bookings</a>
+                    <a class="nav-link" href="<?php echo url('/reviews'); ?>">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo url('/bookings'); ?>">Bookings</a>
                 </li>
             </ul>
             <ul class="navbar-nav">

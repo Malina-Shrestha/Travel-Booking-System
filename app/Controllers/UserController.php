@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: malina
- * Date: 4/5/19
- * Time: 9:39 PM
- */
-
 namespace App\Controllers;
 
 
@@ -15,6 +8,8 @@ use System\Core\BaseController;
 class UserController extends BaseController
 {
     public function index()
+
+
     {
         view('front/user/index');
     }
