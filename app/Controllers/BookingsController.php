@@ -30,12 +30,23 @@ class BookingsController extends BaseController
 
         $booking = new Booking;
         $booking->load($id);
+
+        if(empty($end_date)) {
+            $total = $qty * $booking->price;
+            $end_date = null;
+        }
+        else {
+            $no_of_days = date_diff(new \DateTime($start_date), new \DateTime($end_date), true);
+            $total = $qty * $booking->price * $no_of_days->days;
+        }
+
         $booking->qty = $qty;
+        $booking->total = $total;
         $booking->status = $status;
         $booking->start_date = $start_date;
         $booking->end_date = $end_date;
-        $user->updated_at = date('Y-m-d H:i:s');
-        $user->save();
+        $booking->updated_at = date('Y-m-d H:i:s');
+        $booking->save();
 
         $_SESSION['message'] = [
             'content' => 'Booking updated',

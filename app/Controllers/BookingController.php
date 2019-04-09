@@ -56,4 +56,22 @@ class BookingController extends BaseController
 
     }
 
+    public function cancel($id)
+    {
+        $booking = new Booking;
+        $booking->load($id);
+
+        $booking->status = 'cancelled';
+        $booking->updated_at = date('Y-m-d H:i:s');
+        $booking->save();
+
+        $_SESSION['message'] = [
+            'content' => 'Your booking is cancelled',
+            'type' => 'success'
+        ];
+
+        redirect(url('/user'));
+
+    }
+
 }

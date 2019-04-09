@@ -20,7 +20,7 @@
                         <th>User</th>
                         <th>Package</th>
                         <th>Price</th>
-                        <th>Qty</th>
+                        <th>Quantity</th>
                         <th>Total</th>
                         <th>Remarks</th>
                         <th>Status</th>
@@ -58,8 +58,10 @@
                         <td><?php echo $booking->created_at; ?></td>
                         <td><?php echo $booking->updated_at; ?></td>
                         <td>
-                        <a href="<?php echo url('/bookings/edit/'.$user->id) ?>" class="btn btn-primary btn-sm">Edit</a>
-                            <a href="<?php echo url('/bookings/delete/'.$user->id) ?>" class="btn btn-danger btn-sm delete">Delete</a>
+                        <a href="<?php echo url('/bookings/edit/'.$booking->id) ?>" class="btn btn-primary btn-sm">Edit</a>
+                            <?php if ($booking->status != 'completed'): ?>
+                            <a href="<?php echo url('/bookings/delete/'.$booking->id) ?>" class="btn btn-danger btn-sm delete">Delete</a>
+                            <?php endif; ?>
                         </td>
                     </tr>
                     <?php endforeach; ?>

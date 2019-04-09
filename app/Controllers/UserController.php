@@ -2,16 +2,19 @@
 namespace App\Controllers;
 
 
+use App\Models\Booking;
 use App\Models\User;
 use System\Core\BaseController;
 
 class UserController extends BaseController
 {
     public function index()
-
-
     {
-        view('front/user/index');
+        $user = current_user('user');
+
+        $bookings = $user->related(Booking::class, 'user_id', 'child')->get();
+
+        view('front/user/index',compact('bookings', 'user'));
     }
 
     public function login()

@@ -48,7 +48,50 @@
                                 </ul>
                             </div>
                             <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab"><?php echo nl2br($package->description); ?></div>
-                            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">...</div>
+                            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                <div class="col-12 mt-3">
+                                    <div class="row">
+                                        <div class="col-6">
+                                           <div class="row">
+                                               <div class="col-12">
+                                                   <h4>Add Review</h4>
+                                               </div>
+                                               <div class="col-12">
+                                                   <?php if(login_check('user')): ?>
+                                                   <form action="<?php echo url('/review');?>" method="post">
+                                                       <input type="hidden" name="package_id" value="<?php echo $package->id; ?>">
+                                                       <div class="form-group">
+                                                           <label for="description">Review</label>
+                                                           <textarea name="description" id="description" rows="5" class="form-control" required></textarea>
+                                                       </div>
+                                                       <div class="form-group">
+                                                           <label for="rating">Rating</label>
+                                                           <div class="starrating risingstar d-flex justify-content-center flex-row-reverse">
+                                                               <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 star"></label>
+                                                               <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 star"></label>
+                                                               <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 star"></label>
+                                                               <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 star"></label>
+                                                               <input type="radio" id="star1" name="rating" value="1" checked /><label for="star1" title="1 star"></label>
+                                                           </div>
+                                                       </div>
+                                                       <div class="form-group">
+                                                           <button type="submit" class="btn btn-success">Rate Now</button>
+                                                       </div>
+
+                                               </div>
+                                                   </form>
+                                               <?php else: ?>
+                                                   <h5 class="text-center">Please login to rate this package.</h5>
+                                                   <div class="col-12 text-center">
+                                                       <a href="<?php echo url('/user/login'); ?>" class="btn btn-success btn-lg">Login</a>
+                                                   </div>
+                                               <?php endif; ?>
+                                               </div>
+                                           </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="tab-pane fade" id="booking" role="tabpanel" aria-labelledby="booking-tab">
                                 <div class="col-5 mx-auto my-3">
                                     <?php if(login_check('user')): ?>
@@ -63,7 +106,7 @@
                                             <input type="text" name="start_date" id="start_date" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#start_date" required>
                                         </div>
                                         <div class="form-group">
-                                        <label for="end_date">End Date/Time</label>
+                                        <label for="end_date">End Date</label>
                                         <input type="text" name="end_date" id="end_date" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#end_date" >
                                             <small>Leave this field for single day packages.</small>
                                 </div>
