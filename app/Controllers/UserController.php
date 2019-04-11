@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 
 use App\Models\Booking;
+use App\Models\Review;
 use App\Models\User;
 use System\Core\BaseController;
 
@@ -14,7 +15,9 @@ class UserController extends BaseController
 
         $bookings = $user->related(Booking::class, 'user_id', 'child')->get();
 
-        view('front/user/index',compact('bookings', 'user'));
+        $reviews = $user->related(Review::class, 'user_id', 'child')->get();
+
+        view('front/user/index',compact('bookings', 'user', 'reviews'));
     }
 
     public function login()

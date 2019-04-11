@@ -19,4 +19,24 @@ $(function () {
         },
         format: "YYYY-MM-DD HH:mm:ss"
     });
+
+    $('.delete').click(function (e) {
+        e.preventDefault();
+        url = $(this).attr('href');
+
+        if(confirm('Confirm delete')){
+            location.href = url;
+        }
+
+    });
+
+    $('.cancel').click(function (e) {
+        e.preventDefault();
+        url = $(this).attr('href');
+
+        if(confirm('Confirm cancel')){
+            location.href = url;
+        }
+
+    });
 });

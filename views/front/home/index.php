@@ -10,7 +10,7 @@
             <div class="col-12">
                 <div class="row">
                     <?php foreach ($packages as $package): ?>
-                    <div class="col-3 mb-3">
+                    <div class="col-sm-3 col-6 mb-3">
                         <div class="row">
                             <div class="col-12">
                                 <?php if(!empty($package->image)): ?>

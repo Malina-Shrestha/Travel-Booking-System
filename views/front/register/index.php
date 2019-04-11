@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-12 py-3 bg-white">
         <div class="row">
-            <div class="col-5 mx-auto">
+            <div class="col-md-5 col-sm-6 mx-auto">
                 <div class="row">
                     <div class="col-12">
                         <h4>Register</h4>

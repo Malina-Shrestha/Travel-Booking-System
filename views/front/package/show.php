@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-12 py-3 bg-white">
         <div class="row">
-            <div class="col-12">
+            <divv class="col-12">
                 <div class="row">
                     <h3><?php echo $package->name; ?></h3>
                     <?php if(!empty($package->image)): ?>
@@ -51,7 +51,7 @@
                             <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                                 <div class="col-12 mt-3">
                                     <div class="row">
-                                        <div class="col-6">
+                                        <div class="col-sm--6">
                                            <div class="row">
                                                <div class="col-12">
                                                    <h4>Add Review</h4>
@@ -60,10 +60,10 @@
                                                    <?php if(login_check('user')): ?>
                                                    <form action="<?php echo url('/review');?>" method="post">
                                                        <input type="hidden" name="package_id" value="<?php echo $package->id; ?>">
-                                                       <div class="form-group">
+                                                        <div class="form-group">
                                                            <label for="description">Review</label>
                                                            <textarea name="description" id="description" rows="5" class="form-control" required></textarea>
-                                                       </div>
+                                                        </div>
                                                        <div class="form-group">
                                                            <label for="rating">Rating</label>
                                                            <div class="starrating risingstar d-flex justify-content-center flex-row-reverse">
@@ -73,27 +73,63 @@
                                                                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 star"></label>
                                                                <input type="radio" id="star1" name="rating" value="1" checked /><label for="star1" title="1 star"></label>
                                                            </div>
-                                                       </div>
                                                        <div class="form-group">
                                                            <button type="submit" class="btn btn-success">Rate Now</button>
                                                        </div>
-
-                                               </div>
                                                    </form>
+                                               </div>
                                                <?php else: ?>
                                                    <h5 class="text-center">Please login to rate this package.</h5>
                                                    <div class="col-12 text-center">
                                                        <a href="<?php echo url('/user/login'); ?>" class="btn btn-success btn-lg">Login</a>
                                                    </div>
                                                <?php endif; ?>
-                                               </div>
                                            </div>
+                                        </div>
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h4>Rating</h4>
+                                            </div>
+                                            <div class="coi-12">
+                                                <span class="rating"><?php echo number_format($rating, '1');?></span>
+                                                <br>
+                                                <small>of <?php echo count($reviews);?> reviews.</small>
+                                            </div>
+                                            <div class="col-12">
+                                                <hr>
+                                            </div>
+                                            <div class="col-12">
+                                                <?php if(!empty($reviews)): ?>
+                                                <?php foreach ($reviews as $review): ?>
+                                                <div class="col-12 mb-3 py-3 text-white bg-secondary">
+                                                    <div class="row">
+                                                        <div class="col12">
+                                                            <?php echo $review->description; ?>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <?php
+                                                            $user = $review->related(\App\Models\User::class, 'user_id', 'parent')->single();
+                                                        ?>
+                                                        <small>
+                                                            By: <strong><?php echo $user->name; ?></strong> <strong>Posted on: </strong><?php echo $review->created_at; ?> <strong>Rating: </strong><?php echo $review->rating; ?>
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                                <?php endforeach; ?>
+                                                <?php endif; ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="booking" role="tabpanel" aria-labelledby="booking-tab">
-                                <div class="col-5 mx-auto my-3">
+                        </div>
+                        </div>
+                                <div class="tab-pane fade" id="booking" role="tabpanel" aria-labelledby="booking-tab">
+
+                                <div class="col-md-5 col-sm-6 mx-auto my-3">
                                     <?php if(login_check('user')): ?>
                                     <form action="<?php echo url('/booking/'); ?>" method="post">
                                         <input type="hidden" name="package_id" value="<?php echo $package->id; ?>">
@@ -102,22 +138,21 @@
                                             <input type="number" name="qty" id="qty" class="form-control" min="1" value="1" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="start_date">Start Date</label>
+                                            <label for="start_date">Start Date/Time</label>
                                             <input type="text" name="start_date" id="start_date" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#start_date" required>
                                         </div>
                                         <div class="form-group">
-                                        <label for="end_date">End Date</label>
+                                        <label for="end_date">End Date/Time</label>
                                         <input type="text" name="end_date" id="end_date" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#end_date" >
                                             <small>Leave this field for single day packages.</small>
-                                </div>
+                                        </div>
                                         <div class="form-group">
                                         <label for="remarks">Remarks (if any)</label>
                                             <textarea name="remarks" id="remarks" class="form-control"></textarea>
-                                </div>
+                                        </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary">Book Now</button>
                                         </div>
-
                                     </form>
                                     <?php else: ?>
                                     <h5 class="text-center">Please login to book this package.</h5>
@@ -132,5 +167,6 @@
                 </div>
             </div>
         </div>
+    </div>
 
 <?php view('front/includes/footer'); ?>

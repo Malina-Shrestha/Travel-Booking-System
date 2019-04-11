@@ -38,22 +38,47 @@ class ReviewController extends BaseController
 
     }
 
-    public function cancel($id)
+    public function edit($id)
     {
-        $booking = new Booking;
-        $booking->load($id);
+        $review = new Review;
+        $review->load($id);
 
-        $booking->status = 'cancelled';
-        $booking->updated_at = date('Y-m-d H:i:s');
-        $booking->save();
+        view('front/review/edit', compact( 'review'));
+    }
+
+    public function update($id)
+    {
+        extract($_POST);
+
+        $review = new Review;
+        $review->load($id);
+        $review->description = $description;
+        $review->rating = $rating;
+        $review->updated_at = date('Y-m-d H:i:s');
+        $review->save();
 
         $_SESSION['message'] = [
-            'content' => 'Your booking is cancelled',
+            'content' => 'Your review has been updated.',
             'type' => 'success'
         ];
 
         redirect(url('/user'));
-
     }
+
+    public function delete($id)
+    {
+        $review = new Review;
+        $review->load($id);
+        $review->delete();
+
+        $_SESSION['message'] = [
+            'content' => 'Your review has been removed.',
+            'type' => 'success'
+        ];
+
+        redirect(url('/user'));
+    }
+
+
 
 }

@@ -20,7 +20,7 @@
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="booking" role="tabpanel" aria-labelledby="booking-tab">
+                        <div class="tab-pane fade show active table-responsive" id="booking" role="tabpanel" aria-labelledby="booking-tab">
                             <?php if(!empty($bookings)): ?>
                                 <table class="table table-hover table-striped table-sm my-3">
                                     <thead>
@@ -57,7 +57,7 @@
                                             <td><?php echo $booking->end_date; ?></td>
                                             <td>
                                                 <?php if ($booking->status != 'completed' && $booking->status != 'cancelled'): ?>
-                                                    <a href="<?php echo url('/booking/cancel/'.$booking->id) ?>" class="btn btn-danger btn-sm delete">Cancel Booking</a>
+                                                    <a href="<?php echo url('/booking/cancel/'.$booking->id) ?>" class="btn btn-danger btn-sm cancel">Cancel Booking</a>
                                                 <?php endif; ?>
                                             </td>
                                         </tr>
@@ -68,7 +68,43 @@
                                 <h6 class="text-center"><em>No booking added.</em></h6>
                             <?php endif; ?>
                         </div>
-                        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">...</div>
+                        <div class="tab-pane fade table-responsive" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                            <?php if(!empty($reviews)): ?>
+                                <table class="table table-hover table-striped table-sm my-3">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Package</th>
+                                        <th>Comment</th>
+                                        <th>Rating</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php $i = 1; ?>
+                                    <?php foreach ($reviews as $review): ?>
+                                        <tr>
+                                            <td><?php echo $i++; ?></td>
+                                            <td>
+                                                <?php
+                                                $package = $review->related(\App\Models\Package::class, 'package_id', 'parent')->single();
+                                                echo $package->name;
+                                                ?>
+                                            </td>
+                                            <td><?php echo $review->description; ?></td>
+                                            <td><?php echo $review->rating; ?></td>
+                                            <td>
+                                            <a href="<?php echo url('/review/edit/'.$review->id) ?>" class="btn btn-primary btn-sm">Edit</a>
+                                            <a href="<?php echo url('/review/delete/'.$review->id) ?>" class="btn btn-danger btn-sm delete">Delete</a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            <?php else: ?>
+                                <h6 class="text-center"><em>No review added.</em></h6>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
             </div>
