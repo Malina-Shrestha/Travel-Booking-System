@@ -9,7 +9,9 @@
         <div class="row">
             <divv class="col-12">
                 <div class="row">
-                    <h3><?php echo $package->name; ?></h3>
+                    <div class="col-12">
+                        <h3><?php echo $package->name; ?></h3>
+                    </div>
                     <?php if(!empty($package->image)): ?>
                     <div class="col-12 text-center">
                         <img src="<?php echo url('/assets/images/'.$package->image); ?>" class="img-fluid border border-secondary">
@@ -51,7 +53,7 @@
                             <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                                 <div class="col-12 mt-3">
                                     <div class="row">
-                                        <div class="col-sm--6">
+                                        <div class="col-sm-6">
                                            <div class="row">
                                                <div class="col-12">
                                                    <h4>Add Review</h4>
@@ -73,11 +75,11 @@
                                                                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 star"></label>
                                                                <input type="radio" id="star1" name="rating" value="1" checked /><label for="star1" title="1 star"></label>
                                                            </div>
+                                                       </div>
                                                        <div class="form-group">
                                                            <button type="submit" class="btn btn-success">Rate Now</button>
                                                        </div>
                                                    </form>
-                                               </div>
                                                <?php else: ?>
                                                    <h5 class="text-center">Please login to rate this package.</h5>
                                                    <div class="col-12 text-center">
@@ -86,12 +88,13 @@
                                                <?php endif; ?>
                                            </div>
                                         </div>
+                                        </div>
                                     <div class="col-sm-6">
                                         <div class="row">
                                             <div class="col-12">
                                                 <h4>Rating</h4>
                                             </div>
-                                            <div class="coi-12">
+                                            <div class="col-12">
                                                 <span class="rating"><?php echo number_format($rating, '1');?></span>
                                                 <br>
                                                 <small>of <?php echo count($reviews);?> reviews.</small>
@@ -104,7 +107,7 @@
                                                 <?php foreach ($reviews as $review): ?>
                                                 <div class="col-12 mb-3 py-3 text-white bg-secondary">
                                                     <div class="row">
-                                                        <div class="col12">
+                                                        <div class="col-12">
                                                             <?php echo $review->description; ?>
 
                                                         </div>
@@ -126,8 +129,7 @@
                                 </div>
                             </div>
                         </div>
-                        </div>
-                                <div class="tab-pane fade" id="booking" role="tabpanel" aria-labelledby="booking-tab">
+                            <div class="tab-pane fade" id="booking" role="tabpanel" aria-labelledby="booking-tab">
 
                                 <div class="col-md-5 col-sm-6 mx-auto my-3">
                                     <?php if(login_check('user')): ?>
